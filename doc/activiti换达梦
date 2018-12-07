@@ -1,0 +1,26 @@
+1.-------------
+#尾部的数据库名字，配置不配置都可。建议不配置
+spring.datasource.p3.url=jdbc:dm://172.16.14.106:5240/SHEMEBANAN5?comOra=true
+spring.datasource.p3.username=SYSDBA
+spring.datasource.p3.password=SYSDBA
+spring.datasource.p3.driver-class-name=dm.jdbc.driver.DmDriver
+##wall删除
+spring.datasource.p3.filters=stat,log4j
+###mergesql注释掉，达梦不支持
+##spring.datasource.p3.connectionProperties=druid.stat.mergeSql=true;druid.stat.slowSqlMillis=2000
+2.pom.xml-------------
+jdk改为1.7，达蒙支持1.7
+	<java.version>1.7</java.version>
+连接池换成1.1.9以上	
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.12</version>
+        </dependency>  	
+换成达蒙驱动        
+        <dependency>
+            <groupId>dm.jdbc</groupId>
+            <artifactId>Dm7JdbcDriver17</artifactId>
+            <version>7.0</version>
+        </dependency>        
+完毕！！        

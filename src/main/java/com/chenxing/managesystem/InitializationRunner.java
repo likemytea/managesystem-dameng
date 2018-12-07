@@ -30,7 +30,7 @@ public class InitializationRunner implements ApplicationRunner {
 	 */
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		log.info("initialization start ...");
+		log.info("managesystem-dameng:initialization start ...");
 		todo();
 	}
 
