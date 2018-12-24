@@ -4,6 +4,7 @@
 package com.chenxing.managesystem.controller;
 
 import java.text.ParseException;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,4 +96,16 @@ public class TestController {
 		return JSON.toJSONString(res);
 	}
 
+	/**
+	 * 测试达梦clob查询
+	 * 
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/searchUser", method = RequestMethod.GET)
+	public String searchUser(@RequestParam int currentpage, @RequestParam int pagesize, @RequestParam String userDetail)
+			throws ParseException {
+		List<User> lst = userService.findAllUser(currentpage, pagesize, userDetail);
+		log.info("user-数组" + JSON.toJSONString(lst));
+		return JSON.toJSONString(JSON.toJSONString(lst));
+	}
 }

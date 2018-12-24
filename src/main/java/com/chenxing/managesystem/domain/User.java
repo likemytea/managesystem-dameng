@@ -5,6 +5,15 @@ public class User {
 	private String userName;
 	private String password;
 	private String phone;
+	private String userDetail;
+
+	public String getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(String userDetail) {
+		this.userDetail = userDetail;
+	}
 
 	public Integer getUserId() {
 		return userId;

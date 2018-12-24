@@ -11,5 +11,5 @@ import com.chenxing.managesystem.domain.User;
 public interface UserService {
 	int addUser(User user);
 
-	List<User> findAllUser(int pageNum, int pageSize);
+	List<User> findAllUser(int pageNum, int pageSize, String userDetail);
 }

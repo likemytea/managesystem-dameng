@@ -19,8 +19,12 @@
             column="phone"
             property="phone"
             jdbcType="VARCHAR" />
+        <result
+            column="USER_DETAIL"
+            property="userDetail"
+            jdbcType="VARCHAR" />
     </resultMap>
-    <sql id="Base_Column_List"> user_id, user_name, password, phone
+    <sql id="Base_Column_List"> user_id, user_name, password, phone,USER_DETAIL
     </sql>
     <select
         id="selectByPrimaryKey"
@@ -35,7 +39,10 @@
         resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from t_user
+        from t_user 
+        where
+        dbms_lob.compare(USER_DETAIL, to_clob(#{userDetail} )) = 0
+        
     </select>
     <delete
         id="deleteByPrimaryKey"

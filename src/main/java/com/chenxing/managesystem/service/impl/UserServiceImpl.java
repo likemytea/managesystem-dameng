@@ -1,6 +1,10 @@
 package com.chenxing.managesystem.service.impl;
 
+import java.sql.Clob;
+import java.sql.SQLException;
 import java.util.List;
+
+import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +29,21 @@ public class UserServiceImpl implements UserService {
 	 * pageNum 开始页数 pageSize 每页显示的数据条数
 	 */
 	@Override
-	public List<User> findAllUser(int pageNum, int pageSize) { 
+	public List<User> findAllUser(int pageNum, int pageSize, String userDetail) {
 		//将参数传给这个方法就可以实现物理分页了，非常简单。
 		PageHelper.startPage(pageNum, pageSize); 
-		return userMapper.selectAllUser(); 
+
+		Clob clob = null;
+		try {
+			clob = new javax.sql.rowset.serial.SerialClob(userDetail.toCharArray());
+		} catch (SerialException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userMapper.selectAllUser(clob);
 	}
 		
 }

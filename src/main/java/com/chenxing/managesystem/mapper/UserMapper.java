@@ -2,6 +2,8 @@ package com.chenxing.managesystem.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.chenxing.managesystem.domain.User;
 
 public interface UserMapper {
@@ -17,5 +19,6 @@ public interface UserMapper {
 
 	int updateByPrimaryKey(User record); 
 	// 这个方式我自己加的
-	List<User> selectAllUser();
+
+	List<User> selectAllUser(@Param("userDetail") java.sql.Clob userDetail);
 }
